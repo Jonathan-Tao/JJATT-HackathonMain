@@ -1,92 +1,198 @@
 import "./styles.css";
-
 import React from "react";
 
-import { Text } from './Text'
+import { Parallax, ParallaxLayer } from "@react-spring/parallax";
 
-import {LOTE} from "./LOTE.jsx";
+import wPS from "./img/wPS.png";
 import {
-  LineChart,
-  Line,
+  BarChart,
+  Bar,
+  Cell,
   XAxis,
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend
+  Legend,
+  ResponsiveContainer,
 } from "recharts";
 
-const data = [
+const data1 = [
   {
-    name: "Page A",
-    uv: 4000,
-    pv: 2400,
-    amt: 2400
+    name: "Less than $10000",
+    PercentOfWhiteRespondants: null,
+    PercentOfBlackRespondants: null,
+    PercentOfHispanicRespondants: null,
   },
   {
-    name: "Page B",
-    uv: 3000,
-    pv: 1398,
-    amt: 2210
+    name: "Less than $10000",
+    PercentOfWhiteRespondants: null,
+    PercentOfBlackRespondants: null,
+    PercentOfHispanicRespondants: null,
   },
   {
-    name: "Page C",
-    uv: 2000,
-    pv: 9800,
-    amt: 2290
+    name: "Less than $10000",
+    PercentOfWhiteRespondants: null,
+    PercentOfBlackRespondants: null,
+    PercentOfHispanicRespondants: null,
   },
   {
-    name: "Page D",
-    uv: 2780,
-    pv: 3908,
-    amt: 2000
+    name: "Less than $10000",
+    PercentOfWhiteRespondants: null,
+    PercentOfBlackRespondants: null,
+    PercentOfHispanicRespondants: null,
   },
   {
-    name: "Page E",
-    uv: 1890,
-    pv: 4800,
-    amt: 2181
+    name: "Less than $10000",
+    PercentOfWhiteRespondants: null,
+    PercentOfBlackRespondants: null,
+    PercentOfHispanicRespondants: null,
   },
   {
-    name: "Page F",
-    uv: 2390,
-    pv: 3800,
-    amt: 2500
+    name: "Less than $10000",
+    PercentOfWhiteRespondants: null,
+    PercentOfBlackRespondants: null,
+    PercentOfHispanicRespondants: null,
   },
   {
-    name: "Page G",
-    uv: 3490,
-    pv: 4300,
-    amt: 2100
-  }
+    name: "Less than $10000",
+    PercentOfWhiteRespondants: null,
+    PercentOfBlackRespondants: null,
+    PercentOfHispanicRespondants: null,
+  },
+  {
+    name: "Less than $10000",
+    PercentOfWhiteRespondants: null,
+    PercentOfBlackRespondants: null,
+    PercentOfHispanicRespondants: null,
+  },
+  {
+    name: "Less than $10000",
+    PercentOfWhiteRespondants: null,
+    PercentOfBlackRespondants: null,
+    PercentOfHispanicRespondants: null,
+  },
+  {
+    name: "Less than $10000",
+    PercentOfWhiteRespondants: null,
+    PercentOfBlackRespondants: null,
+    PercentOfHispanicRespondants: null,
+  },
+  {
+    name: "Less than $10000",
+    PercentOfWhiteRespondants: null,
+    PercentOfBlackRespondants: null,
+    PercentOfHispanicRespondants: null,
+  },
+  {
+    name: "Less than $10000",
+    PercentOfWhiteRespondants: null,
+    PercentOfBlackRespondants: null,
+    PercentOfHispanicRespondants: null,
+  },
+  {
+    name: "Less than $10000",
+    PercentOfWhiteRespondants: null,
+    PercentOfBlackRespondants: null,
+    PercentOfHispanicRespondants: null,
+  },
+  {
+    name: "Less than $10000",
+    PercentOfWhiteRespondants: null,
+    PercentOfBlackRespondants: null,
+    PercentOfHispanicRespondants: null,
+  },
+  {
+    name: "Less than $10000",
+    PercentOfWhiteRespondants: null,
+    PercentOfBlackRespondants: null,
+    PercentOfHispanicRespondants: null,
+  },
+  {
+    name: "Less than $10000",
+    PercentOfWhiteRespondants: null,
+    PercentOfBlackRespondants: null,
+    PercentOfHispanicRespondants: null,
+  },
 ];
 
 export default function App() {
+  let api_url =
+    "https://api.census.gov/data/2020/acs/acs5?get=NAME,group(B19001A)&for=us:1&key=1816518312906e0fbd840fe0717a3a4471ad4e12";
+  async function getApi() {
+    const response = await fetch(api_url);
+    const data = await response.json();
+    return data;
+  }
+  
+  getApi().then((res) => {
+    console.log(res)
+    for (let i = 5, j = 0; i < res[1].length - 4; i += 4, j++) {
+      data1[j].PercentOfWhiteRespondants = (res[1][i]) / res[1][1] * 100;
+      data1[j].PercentOfWhiteRespondants = Math.round(data1[j].PercentOfWhiteRespondants * 100) / 100;
+
+    }
+  });
+  api_url =
+    "https://api.census.gov/data/2020/acs/acs5?get=NAME,group(B19001B)&for=us:1&key=1816518312906e0fbd840fe0717a3a4471ad4e12";
+  async function getApi2() {
+    const response = await fetch(api_url);
+    const data = await response.json();
+    return data;
+  }
+  getApi().then((res) => {
+    for (let i = 5, j = 0; i < res[1].length - 4; i += 4, j++) {
+      data1[j].PercentOfBlackRespondants = (res[1][i]) / res[1][1] * 100;
+      data1[j].PercentOfBlackRespondants = Math.round(data1[j].PercentOfBlackRespondants * 100) / 100;
+    }
+  });
+
+  api_url = 
+    "https://api.census.gov/data/2020/acs/acs5?get=NAME,group(B19001I)&for=us:1&key=1816518312906e0fbd840fe0717a3a4471ad4e12";
+  async function getApi3() {
+      const response = await fetch(api_url);
+      const data = await response.json();
+      return data;
+    }
+    getApi().then((res) => {
+      for (let i = 5, j = 0; i < res[1].length - 4; i += 4, j++) {
+        data1[j].PercentOfHispanicRespondants = (res[1][i]) / res[1][1] * 100;
+        data1[j].PercentOfHispanicRespondants = Math.round(data1[j].PercentOfHispanicRespondants * 100) / 100;
+      }
+    });
   return (
-    <><div>
-      <h1> <LOTE /></h1>
-      
-    </div><LineChart
-      width={500}
-      height={300}
-      data={data}
-      margin={{
-        top: 5,
-        right: 30,
-        left: 20,
-        bottom: 5
-      }}
-    >
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="name" />
-        <YAxis />
-        <Tooltip />
-        <Legend />
-        <Line
-          type="monotone"
-          dataKey="pv"
-          stroke="#8884d8"
-          activeDot={{ r: 8 }} />
-        <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
-      </LineChart></>
+    <>
+      <div>
+        <Parallax pages={4}>
+          <ParallaxLayer
+            style={{
+              backgroundImage: `url(${wPS})`,
+              backgroundSize: "cover",
+            }}
+          ></ParallaxLayer>
+
+          <ParallaxLayer offset={1}>
+            <ResponsiveContainer
+              width="100%"
+              height="100%"
+            >
+              <BarChart
+                width={1500}
+                height={500}
+                data={data1}
+              >
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="name" />
+                <YAxis />
+                <Tooltip />
+                <Legend />
+                <Bar dataKey="PercentOfWhiteRespondants" fill="#F58024" />
+                <Bar dataKey="PercentOfBlackRespondants" fill="#994FB2" />
+                <Bar dataKey="PercentOfHispanicRespondants" fill="#589C48" />
+              </BarChart>
+            </ResponsiveContainer>
+          </ParallaxLayer>
+        </Parallax>
+      </div>
+    </>
   );
 }
