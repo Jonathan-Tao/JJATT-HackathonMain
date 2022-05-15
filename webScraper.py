@@ -1,3 +1,4 @@
 import requests
-URL = ""
-page = 
+
+response = requests.get("https://www.geeksforgeeks.org/")
+print(response.text) 
