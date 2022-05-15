@@ -1,22 +1,5 @@
-
-
 .App {
     font-family: sans-serif;
     text-align: center;
   }
   
-
-
-.image{
-  position: relatvie;
-  height: 100vh;
-}
-
-.content{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  height: 100vh;
-  width: 100%;
-}
