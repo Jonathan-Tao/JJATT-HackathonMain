@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/Jonathan-Tao/JJATT-Hackathon#readme",
   "dependencies": {
+    "@react-spring/parallax": "^9.4.5",
     "react-parallax": "^3.3.0"
   }
 }
