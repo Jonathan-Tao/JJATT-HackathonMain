@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/Jonathan-Tao/JJATT-Hackathon/issues"
   },
-  "homepage": "https://github.com/Jonathan-Tao/JJATT-Hackathon#readme"
+  "homepage": "https://github.com/Jonathan-Tao/JJATT-Hackathon#readme",
+  "dependencies": {
+    "react-parallax": "^3.3.0"
+  }
 }
