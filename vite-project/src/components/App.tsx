@@ -1,10 +1,10 @@
 import "./styles.css";
-import BaGr from './BaGr.jsx';
-import Authors from './Authors.jsx';
-import LOET from './LOET.jsx';
 
 import React from "react";
 
+import { Text } from './Text'
+
+import {LOTE} from "./LOTE.jsx";
 import {
   LineChart,
   Line,
@@ -63,9 +63,8 @@ const data = [
 export default function App() {
   return (
     <><div>
-      <BaGr />
-      <Authors />
-      <LOET />
+      <h1> <LOTE /></h1>
+      
     </div><LineChart
       width={500}
       height={300}
