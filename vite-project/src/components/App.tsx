@@ -1,4 +1,8 @@
 import "./styles.css";
+import BaGr from './BaGr.jsx';
+import Authors from './Authors.jsx';
+import LOET from './LOET.jsx';
+
 import React from "react";
 
 import {
@@ -58,7 +62,11 @@ const data = [
 
 export default function App() {
   return (
-    <LineChart
+    <><div>
+      <BaGr />
+      <Authors />
+      <LOET />
+    </div><LineChart
       width={500}
       height={300}
       data={data}
@@ -69,18 +77,17 @@ export default function App() {
         bottom: 5
       }}
     >
-      <CartesianGrid strokeDasharray="3 3" />
-      <XAxis dataKey="name" />
-      <YAxis />
-      <Tooltip />
-      <Legend />
-      <Line
-        type="monotone"
-        dataKey="pv"
-        stroke="#8884d8"
-        activeDot={{ r: 8 }}
-      />
-      <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
-    </LineChart>
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="name" />
+        <YAxis />
+        <Tooltip />
+        <Legend />
+        <Line
+          type="monotone"
+          dataKey="pv"
+          stroke="#8884d8"
+          activeDot={{ r: 8 }} />
+        <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
+      </LineChart></>
   );
 }
